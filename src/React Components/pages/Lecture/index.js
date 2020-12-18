@@ -9,7 +9,7 @@ import { getLectures } from '../../../redux/actions/Lecture Actions';
 class Lecture extends Component {
     //==========================================================================
     componentDidMount() {
-        this.props.getLectures(this.props.activeCourse._id);
+        this.props.getLectures(this.props.activeCourse.id);
     }
     //==========================================================================
     componentDidUpdate(prevProps) {
@@ -82,7 +82,7 @@ class Lecture extends Component {
                 name={lecture.name}
                 linkID={lecture.linkID}
                 date={lecture.date}
-                lid={lecture._id}
+                lectureID={lecture.id}
                 index={index}
                 key={index}
             />

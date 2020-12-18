@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { Component } from 'react';
@@ -20,9 +21,9 @@ class Course extends Component {
         if (
             !prevProps.deletion.approval &&
             this.props.deletion.approval &&
-            this.props.deletion.id === this.props.activeCourse._id
+            this.props.deletion.id === this.props.activeCourse.id
         )
-            this.props.deleteCourse(this.props.activeCourse._id);
+            this.props.deleteCourse(this.props.activeCourse.id);
     }
     //==========================================================================
     render() {
@@ -34,7 +35,7 @@ class Course extends Component {
         window.scrollTo(0, 0);
 
         const {
-            _id,
+            id,
             title,
             about,
             logo,
@@ -42,9 +43,9 @@ class Course extends Component {
             price,
             date,
             instructor,
-            nLectures,
-            nStudents,
-            nQuestions,
+            no_of_Lectures,
+            no_of_Students,
+            no_of_Questions,
             suggestions,
         } = this.props.activeCourse;
 
@@ -56,12 +57,12 @@ class Course extends Component {
         });
 
         let deleteBtn = null;
-        if (this.props.activeCourse.iid === this.props.user.id) {
+        if (this.props.activeCourse.instructorID === this.props.user.id) {
             deleteBtn = (
                 <Link
                     to="#"
                     className="elbtn__type1"
-                    onClick={this.props.triggerDeletion.bind(this, _id)}>
+                    onClick={this.props.triggerDeletion.bind(this,id)}>
                     <i class="fas fa-times-circle" />
                     &nbsp; Delete Course
                 </Link>
@@ -95,13 +96,13 @@ class Course extends Component {
                 <div className="course__group">
                     <div className="course__info-group">
                         <div className="course__info">
-                            No. of Lectures: {nLectures}
+                            No. of Lectures: {no_of_Lectures}
                         </div>
                         <div className="course__info">
-                            No. of Students: {nStudents}
+                            No. of Students: {no_of_Students}
                         </div>
                         <div className="course__info">
-                            No. of Questions: {nQuestions}
+                            No. of Questions: {no_of_Questions}
                         </div>
                         <div className="course__info">
                             Date Created:&emsp;{formatted}

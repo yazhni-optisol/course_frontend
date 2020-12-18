@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -15,7 +16,7 @@ import { getAnswers } from '../../../redux/actions/Answer Actions';
 class Discussion extends Component {
     //==========================================================================
     componentDidMount() {
-        this.props.getQuestions(this.props.activeCourse._id);
+        this.props.getQuestions(this.props.activeCourse.id);
     }
     //==========================================================================
     componentDidUpdate(prevProps) {
@@ -28,14 +29,14 @@ class Discussion extends Component {
 
         if (this.props.questions.activeQuestion) {
             if (!prevProps.questions.activeQuestion)
-                this.props.getAnswers(this.props.questions.activeQuestion._id);
+                this.props.getAnswers(this.props.questions.activeQuestion.id);
             else if (
-                this.props.questions.activeQuestion._id !==
-                    prevProps.questions.activeQuestion._id ||
+                this.props.questions.activeQuestion.id !==
+                    prevProps.questions.activeQuestion.id ||
                 this.props.questions.list.length !==
                     prevProps.questions.list.length
             )
-                this.props.getAnswers(this.props.questions.activeQuestion._id);
+                this.props.getAnswers(this.props.questions.activeQuestion.id);
         }
     }
     //==========================================================================
@@ -85,7 +86,7 @@ class Discussion extends Component {
                 date={thread.date}
                 nAnswers={thread.nAnswers}
                 Quser={thread.user}
-                qid={thread._id}
+                qustionID={thread.id}
                 index={index}
                 key={index}
             />
@@ -98,7 +99,7 @@ class Discussion extends Component {
                 month: 'long',
                 day: 'numeric',
             });
-            console.log(convo._id);
+            console.log(convo.id);
             
             return (
                 <ConvoBubble
@@ -107,13 +108,13 @@ class Discussion extends Component {
                     name={convo.user.name}
                     profilePic={convo.user.profilePic}
                     text={convo.text}
-                    aid={convo._id}
+                    answerID={convo.id}
                     owner={this.props.questions.activeQuestion.user.name}
                 />
             );
         });
 
-        const { date, user, text, _id } = this.props.questions.activeQuestion;
+        const { date, user, text, id } = this.props.questions.activeQuestion;
         const formatted = new Date(date).toLocaleDateString('en-UK', {
             weekday: 'long',
             year: 'numeric',
@@ -127,7 +128,7 @@ class Discussion extends Component {
                 name={user.name}
                 profilePic={user.profilePic}
                 text={text}
-                aid={"-1"}
+                answerID={"-1"}
                 owner={user.name}
             />,
         );

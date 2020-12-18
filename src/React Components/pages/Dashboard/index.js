@@ -54,8 +54,8 @@ class Dashboard extends Component {
                         title={course.title}
                         inst={course.instructor}
                         price={course.price}
-                        cid={course._id}
-                        iid={course.iid}
+                        courseID={course.id}
+                        instructorID={course.instructorID}
                         index={index}
                         key={index}
                         area="suggested"
@@ -70,8 +70,8 @@ class Dashboard extends Component {
                     title={course.title}
                     inst={course.instructor}
                     price={course.price}
-                    cid={course._id}
-                    iid={course.iid}
+                    courseID={course.id}
+                    instructorID={course.instructorID}
                     index={index}
                     key={index}
                     area="list"
