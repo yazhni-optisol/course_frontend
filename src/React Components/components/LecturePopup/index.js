@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -15,7 +16,7 @@ class LecturePopup extends Component {
             name: '',
             link: '',
             description: '',
-            cid: this.props.activeCourse._id,
+            courseID: this.props.activeCourse.id,
             errors: {},
         };
 

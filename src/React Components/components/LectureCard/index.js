@@ -26,9 +26,9 @@ class LectureCard extends Component {
         if (
             !prevProps.deletion.approval &&
             this.props.deletion.approval &&
-            this.props.deletion.id === this.props.lid
+            this.props.deletion.id === this.props.lectureID
         )
-            this.props.deleteLecture(this.props.lid);
+            this.props.deleteLecture(this.props.lectureID);
     }
     //==========================================================================
     lectureHandler = e => {
@@ -37,7 +37,7 @@ class LectureCard extends Component {
     };
     //==========================================================================
     render() {
-        const { name, linkID, date, lid } = this.props;
+        const { name, linkID, date, lectureID } = this.props;
 
         let formatted = new Date(date).toLocaleDateString('en-UK', {
             weekday: 'long',
@@ -47,11 +47,11 @@ class LectureCard extends Component {
         });
 
         let deleteBtn = null;
-        if (this.props.activeCourse.iid === this.props.user.id) {
+        if (this.props.activeCourse.instructorID === this.props.user.id) {
             deleteBtn = (
                 <button
                     className={`lcard__delete`}
-                    onClick={this.props.triggerDeletion.bind(this, lid)}>
+                    onClick={this.props.triggerDeletion.bind(this, lectureID)}>
                     <i class="fas fa-times-circle" />
                 </button>
             );

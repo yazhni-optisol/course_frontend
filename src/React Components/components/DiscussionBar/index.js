@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -31,7 +33,7 @@ class DiscussionBar extends Component {
         e.preventDefault();
         const newAns = {};
         newAns.text = this.state.text;
-        newAns.qid = this.props.activeQuestion._id;
+        newAns.questionID = this.props.activeQuestion.id;
         this.props.createAnswer(newAns, this.props.history);
         this.setState({text: ''});
     };

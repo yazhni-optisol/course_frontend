@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -20,7 +21,7 @@ class CourseCard extends Component {
     };
     //==========================================================================
     render() {
-        const { image, title, inst, price, cid, iid } = this.props;
+        const { image, title, inst, price, courseID, instructorID } = this.props;
 
         return (
             <Link to="/dashboard/course/" onClick={this.clickHandler}>

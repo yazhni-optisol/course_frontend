@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
@@ -26,26 +27,26 @@ class DiscussionThread extends Component {
         if (
             !prevProps.deletion.approval &&
             this.props.deletion.approval &&
-            this.props.deletion.id === this.props.qid
+            this.props.deletion.id === this.props.questionID
         )
-            this.props.deleteQuestion(this.props.qid);
+            this.props.deleteQuestion(this.props.questionID);
     }
     //==========================================================================
     questionHandler = e => {
         e.preventDefault();
-        if (this.props.id !== this.props.questions.activeQuestion._id)
+        if (this.props.id !== this.props.questions.activeQuestion.id)
             this.props.selectQuestion(this.props.index);
     };
     //==========================================================================
     render() {
-        const { text, date, nAnswers, Quser, qid } = this.props;
+        const { text, date, nAnswers, Quser, questionID } = this.props;
 
         let deleteBtn = null;
         if (Quser.name === this.props.user.name) {
             deleteBtn = (
                 <button
                     className={`discThread__delete`}
-                    onClick={this.props.triggerDeletion.bind(this, qid)}>
+                    onClick={this.props.triggerDeletion.bind(this, questionID)}>
                     <i class="fas fa-times-circle" />
                 </button>
             );
@@ -59,7 +60,7 @@ class DiscussionThread extends Component {
         });
 
         const cls =
-            qid === this.props.questions.activeQuestion._id
+            questionID === this.props.questions.activeQuestion.id
                 ? 'discThread--active'
                 : '';
 

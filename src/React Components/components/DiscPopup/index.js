@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -33,7 +34,7 @@ class DiscPopup extends Component {
         e.preventDefault();
         const newQues = {};
         newQues.text = this.state.text;
-        newQues.cid = this.props.activeCourse._id;
+        newQues.cid = this.props.activeCourse.id;
         this.props.createQuestion(newQues, this.props.history);
     };
     //==========================================================================

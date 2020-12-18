@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter} from 'react-router-dom';
 import isEmpty from '../../../validation/isEmpty';
 import { deleteAnswers } from '../../../redux/actions/Answer Actions';
 import { triggerDeletion } from '../../../redux/actions/Delete Actions';
+
 
 class ConvoBubble extends Component {
     //==========================================================================
@@ -18,25 +20,25 @@ class ConvoBubble extends Component {
         if (
             !prevProps.deletion.approval &&
             this.props.deletion.approval &&
-            this.props.deletion.id === this.props.aid
+            this.props.deletion.id === this.props.answerID
         ) {
             console.log('deleting');
-            this.props.deleteAnswers(this.props.aid);
+            this.props.deleteAnswers(this.props.answerID);
         }
     }
     //==========================================================================
     render() {
-        const { name, owner, profilePic, date, aid, text } = this.props;
+        const { name, owner, profilePic, date, answerID, text } = this.props;
 
         let type = 'passive';
         if (name === owner) type = 'active';
 
         let deleteBtn = null;
-        if (name === this.props.user.name && aid !== '-1') {
+        if (name === this.props.user.name && answerID !== '-1') {
             deleteBtn = (
                 <button
                     className={`convoBubble__${type}--delete`}
-                    onClick={this.props.triggerDeletion.bind(this, aid)}>
+                    onClick={this.props.triggerDeletion.bind(this, answerID)}>
                     &times;
                 </button>
             );
