@@ -20,9 +20,9 @@ export const createCourse = (newCourse, history) => dispatch => {
         );
 };
 
-export const getCourses = uid => dispatch => {
+export const getCourses = userID => dispatch => {
     axios
-        .get(`/api/courses/createdby/${uid}`)
+        .get(`/api/courses/createdby/${userID}`)
         .then(res =>
             dispatch({
                 type: COURSES_FETCHED,
@@ -37,9 +37,9 @@ export const getCourses = uid => dispatch => {
         );
 };
 
-export const getSuggestedCourses = uid => dispatch => {
+export const getSuggestedCourses = userID => dispatch => {
     axios
-        .get(`/api/courses/suggested/${uid}`)
+        .get(`/api/courses/suggested/${userID}`)
         .then(res =>
             dispatch({
                 type: COURSES_SUGGESTED,
@@ -54,9 +54,9 @@ export const getSuggestedCourses = uid => dispatch => {
         );
 };
 
-export const getCourse = cid => dispatch => {
+export const getCourse = courseID => dispatch => {
     axios
-        .get(`/api/courses/${cid}`)
+        .get(`/api/courses/${courseID}`)
         .then(res =>
             dispatch({
                 type: COURSE_FETCHED,
@@ -80,9 +80,9 @@ export const selectCourse = (index, area, history) => dispatch => {
     history.push('/dashboard/course');
 };
 
-export const deleteCourse = cid => dispatch => {
+export const deleteCourse = courseID => dispatch => {
     axios
-        .delete(`/api/courses/${cid}`)
+        .delete(`/api/courses/${courseID}`)
         .then(res => {
             console.log('received');
             resetDeletion();

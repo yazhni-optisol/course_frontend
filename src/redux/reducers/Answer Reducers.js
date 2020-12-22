@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { ANSWERS_FETCHED } from '../actions/types';
 import isEmpty from '../../validation/isEmpty';
 
 const initialState = {
-    qid: null,
+    questionID: null,
     list: []
 }
 
@@ -11,7 +12,7 @@ export default function(state = initialState, action) {
         case ANSWERS_FETCHED:
             return {
                 ...state,
-                qid: action.qid,
+                questionID: action.questionID,
                 list: action.payload
             }
 

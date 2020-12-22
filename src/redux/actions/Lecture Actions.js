@@ -19,9 +19,9 @@ export const createLecture = (newLecture, history) => dispatch => {
         );
 };
 
-export const getLectures = cid => dispatch => {
+export const getLectures = courseID => dispatch => {
     axios
-        .get(`/api/lectures/of/${cid}`)
+        .get(`/api/lectures/of/${courseID}`)
         .then(res =>
             dispatch({
                 type: LECTURES_FETCHED,
@@ -36,9 +36,9 @@ export const getLectures = cid => dispatch => {
         );
 };
 
-export const getLecture = lid => dispatch => {
+export const getLecture = lectureID => dispatch => {
     axios
-        .get(`/api/courses/single/${lid}`)
+        .get(`/api/courses/single/${lectureID}`)
         .then(res =>
             dispatch({
                 type: LECTURE_FETCHED,
@@ -60,9 +60,9 @@ export const selectLecture = index => dispatch => {
     });
 };
 
-export const deleteLecture = lid => dispatch => {
+export const deleteLecture = lectureID => dispatch => {
     axios
-        .delete(`/api/lectures/${lid}`)
+        .delete(`/api/lectures/${lectureID}`)
         .then(res => {
             resetDeletion();
         })

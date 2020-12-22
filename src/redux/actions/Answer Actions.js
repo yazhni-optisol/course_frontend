@@ -6,7 +6,7 @@ export const createAnswer = (newAnswer, history) => dispatch => {
     axios
         .post('/api/answers/create', newAnswer)
         .then(res =>
-            axios.get(`/api/answers/of/${newAnswer.qid}`).then(res =>
+            axios.get(`/api/answers/of/${newAnswer.questionID}`).then(res =>
                 dispatch({
                     type: ANSWERS_FETCHED,
                     payload: res.data,
@@ -21,12 +21,12 @@ export const createAnswer = (newAnswer, history) => dispatch => {
         );
 };
 
-export const getAnswers = qid => dispatch => {
+export const getAnswers = questionID => dispatch => {
     axios
-        .get(`/api/answers/of/${qid}`)
+        .get(`/api/answers/of/${questionID}`)
         .then(res =>
             dispatch({
-                qid,
+                questionID,
                 type: ANSWERS_FETCHED,
                 payload: res.data,
             }),
@@ -39,9 +39,9 @@ export const getAnswers = qid => dispatch => {
         );
 };
 
-export const deleteAnswers = aid => dispatch => {
+export const deleteAnswers = answerID => dispatch => {
     axios
-        .delete(`/api/answers/${aid}`)
+        .delete(`/api/answers/${answerID}`)
         .then(res => {
             resetDeletion();
         })

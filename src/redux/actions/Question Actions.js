@@ -9,7 +9,7 @@ export const createQuestion = (newQuestion, history) => dispatch => {
     axios
         .post('/api/questions/create', newQuestion)
         .then(res => axios
-            .get(`/api/questions/askedin/${newQuestion.cid}`)
+            .get(`/api/questions/askedin/${newQuestion.courseID}`)
             .then(res =>
                 dispatch({
                     type: QUESTIONS_FETCHED,
@@ -24,9 +24,9 @@ export const createQuestion = (newQuestion, history) => dispatch => {
         );
 };
 
-export const getQuestions = cid => dispatch => {
+export const getQuestions = courseID => dispatch => {
     axios
-        .get(`/api/questions/askedin/${cid}`)
+        .get(`/api/questions/askedin/${courseID}`)
         .then(res =>
             dispatch({
                 type: QUESTIONS_FETCHED,
@@ -42,9 +42,9 @@ export const selectQuestion = index => dispatch => {
     });
 };
 
-export const deleteQuestion = qid => dispatch => {
+export const deleteQuestion = questionID => dispatch => {
     axios
-        .delete(`/api/questions/${qid}`)
+        .delete(`/api/questions/${questionID}`)
         .catch(err =>
             dispatch({
                 type: GET_ERRORS,
